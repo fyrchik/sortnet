@@ -13,7 +13,7 @@ type sequenceFunc = func(int) SwapSequence
 const maxTestSize = 16
 
 func TestBitonic(t *testing.T) {
-	for i := 1; i < maxTestSize; i++ {
+	for i := 1; i <= maxTestSize; i++ {
 		t.Run(strconv.FormatUint(uint64(i), 10), func(t *testing.T) {
 			testGeneric(t, i, Bitonic)
 		})
@@ -21,7 +21,7 @@ func TestBitonic(t *testing.T) {
 }
 
 func TestBatcher(t *testing.T) {
-	for i := 1; i < maxTestSize; i++ {
+	for i := 1; i <= maxTestSize; i++ {
 		t.Run(strconv.FormatUint(uint64(i), 10), func(t *testing.T) {
 			testGeneric(t, i, Batcher)
 		})
@@ -29,7 +29,7 @@ func TestBatcher(t *testing.T) {
 }
 
 func TestPairwise(t *testing.T) {
-	for i := 1; i < maxTestSize; i++ {
+	for i := 1; i <= maxTestSize; i++ {
 		t.Run(strconv.FormatUint(uint64(i), 10), func(t *testing.T) {
 			testGeneric(t, i, Pairwise)
 		})

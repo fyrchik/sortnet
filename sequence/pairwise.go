@@ -6,8 +6,9 @@ func Pairwise(n int) SwapSequence {
 
 	a := 1
 	for ; a < n; a *= 2 {
-		b, c := a, 0
-		for b < n {
+		var c int
+
+		for b := a; b < n; {
 			ss = append(ss, [2]int{b - a, b})
 
 			b++
