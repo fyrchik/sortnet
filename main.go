@@ -27,6 +27,8 @@ func main() {
 		ss = sequence.Batcher(*size)
 	case "bitonic":
 		ss = sequence.Bitonic(*size)
+	case "pairwise":
+		ss = sequence.Pairwise(*size)
 	default:
 		log.Fatalf("unknown sort type: %s\n", *sortType)
 	}

@@ -28,6 +28,14 @@ func TestBatcher(t *testing.T) {
 	}
 }
 
+func TestPairwise(t *testing.T) {
+	for i := 1; i < maxTestSize; i++ {
+		t.Run(strconv.FormatUint(uint64(i), 10), func(t *testing.T) {
+			testGeneric(t, i, Pairwise)
+		})
+	}
+}
+
 func testGeneric(t *testing.T, n int, f sequenceFunc) {
 	ss := f(n)
 	a := make([]int, n)

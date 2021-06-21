@@ -57,6 +57,17 @@ func benchmarkSort(b *testing.B, n int) {
 			}
 		}
 	})
+
+	b.Run("pairwise", func(b *testing.B) {
+		curr := cloneInts(a)
+		f := getSortingFunc(n, "pairwise")
+		for i := 0; i < b.N; i++ {
+			for j := 0; j < count; j++ {
+				copy(curr, a)
+				f(sort.IntSlice(curr))
+			}
+		}
+	})
 }
 
 func getSortingFunc(n int, name string) func(sort.Interface) {
@@ -78,6 +89,15 @@ func getSortingFunc(n int, name string) func(sort.Interface) {
 			return networks.Bitonic8
 		case 16:
 			return networks.Bitonic16
+		}
+	case "pairwise":
+		switch n {
+		case 4:
+			return networks.Pairwise4
+		case 8:
+			return networks.Pairwise8
+		case 16:
+			return networks.Pairwise16
 		}
 	}
 	panic("unexpected")
