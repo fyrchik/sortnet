@@ -60,25 +60,27 @@ func benchmarkSort(b *testing.B, n int) {
 }
 
 func getSortingFunc(n int, name string) func(sort.Interface) {
-	switch n {
-	case 4:
-		if name == "bitonic" {
+	switch name {
+	case "batcher":
+		switch n {
+		case 4:
+			return networks.Batcher4
+		case 8:
+			return networks.Batcher8
+		case 16:
+			return networks.Batcher16
+		}
+	case "bitonic":
+		switch n {
+		case 4:
 			return networks.Bitonic4
-		}
-		return networks.Batcher4
-	case 8:
-		if name == "bitonic" {
+		case 8:
 			return networks.Bitonic8
-		}
-		return networks.Batcher8
-	case 16:
-		if name == "bitonic" {
+		case 16:
 			return networks.Bitonic16
 		}
-		return networks.Batcher16
-	default:
-		panic("unexpected")
 	}
+	panic("unexpected")
 }
 
 func cloneInts(a []int) []int {
