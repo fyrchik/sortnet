@@ -46,6 +46,7 @@ func main() {
 		FuncName:     *name,
 		ArgumentType: *argType,
 		PackageName:  pkg,
+		Size:         *size,
 	})
 	if err != nil {
 		log.Fatalln(err)

@@ -3,6 +3,7 @@ package networks
 
 import "sort"
 
+// Batcher16 sorts 16-element slice in an oblivious fashion.
 func Batcher16(a sort.Interface) {
 	if !a.Less(0, 1) {
 		a.Swap(0, 1)

@@ -3,6 +3,7 @@ package networks
 
 import "sort"
 
+// Bitonic8 sorts 8-element slice in an oblivious fashion.
 func Bitonic8(a sort.Interface) {
 	if !a.Less(0, 1) {
 		a.Swap(0, 1)

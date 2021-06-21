@@ -3,6 +3,7 @@ package networks
 
 import "sort"
 
+// Bitonic4 sorts 4-element slice in an oblivious fashion.
 func Bitonic4(a sort.Interface) {
 	if !a.Less(0, 1) {
 		a.Swap(0, 1)

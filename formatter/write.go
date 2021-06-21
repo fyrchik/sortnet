@@ -20,6 +20,8 @@ type Options struct {
 	PackageName string
 	// ArgumentType represents argument type (sort.Interface by default).
 	ArgumentType string
+	// Size represents size of the slice to sort.
+	Size int
 }
 
 // WriteFile generates Go function for swapping indices in sequence.
@@ -43,6 +45,8 @@ func writeToBuffer(b *bytes.Buffer, is sequence.SwapSequence, opts *Options) {
 		b.WriteString("import \"sort\"\n")
 	}
 
+	b.WriteString(fmt.Sprintf("// %s sorts %d-element slice in an oblivious fashion.\n",
+		opts.FuncName, opts.Size))
 	b.WriteString(fmt.Sprintf("func %s(a ", opts.FuncName))
 	if opts.ArgumentType == "" {
 		b.WriteString("sort.Interface")
